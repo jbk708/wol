@@ -33,17 +33,31 @@ jobs:
           ruby-version: '3.4'
           bundler-cache: true
 
-      - name: Configure Pages
-        id: pages
-        uses: actions/configure-pages@v5
-
+      # Validation build. Runs everywhere, including forks and branches, and
+      # needs no Pages configuration.
       - name: Build site
-        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        run: bundle exec jekyll build -d _site_check
         env:
           JEKYLL_ENV: production
 
       - name: Check for broken internal links
-        run: ruby script/linkcheck.rb _site
+        run: ruby script/linkcheck.rb _site_check
+
+      # Pages is served from a subpath, so the deployed build needs the
+      # baseurl. configure-pages only works where Pages is enabled, so it is
+      # confined to the branch that actually deploys.
+      - name: Configure Pages
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build site for Pages
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: |
+          bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+          ruby script/linkcheck.rb _site "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
 
       - name: Upload Pages artifact
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'

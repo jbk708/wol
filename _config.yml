@@ -24,6 +24,7 @@ exclude:
   - Gemfile.lock
   - pyproject.toml
   - script
+  - _site_check
   - uv.lock
   - code/**/.pytest_cache
 

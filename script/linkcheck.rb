@@ -1,14 +1,19 @@
 #!/usr/bin/env ruby
 # Check that every internal link in the built site resolves.
 #
-#   ruby script/linkcheck.rb [_site]
+#   ruby script/linkcheck.rb [_site] [baseurl]
 #
 # A bare directory only counts as resolved if it contains an index.html,
 # because GitHub Pages returns 404 for a directory with no index.
+#
+# GitHub Pages serves this site from a subpath, so a production build sets a
+# baseurl and every root-absolute link is emitted with that prefix. Pass the
+# same baseurl here so those links resolve against the build directory.
 
 require "find"
 
 root = (ARGV[0] || "_site").chomp("/")
+baseurl = (ARGV[1] || "").chomp("/")
 abort "not a directory: #{root}" unless File.directory?(root)
 
 missing = []
@@ -17,7 +22,17 @@ Find.find(root) do |path|
   html = File.read(path, encoding: "UTF-8", invalid: :replace)
   html.scan(/(?:href|src)="([^"#?:]+)"/) do |(link)|
     next if link.empty? || link.start_with?("//")
-    target = link.start_with?("/") ? File.join(root, link) : File.join(File.dirname(path), link)
+    if link.start_with?("/")
+      rooted = link
+      if !baseurl.empty?
+        next unless rooted.start_with?(baseurl + "/") || rooted == baseurl
+        rooted = rooted[baseurl.length..] 
+        rooted = "/" if rooted.empty?
+      end
+      target = File.join(root, rooted)
+    else
+      target = File.join(File.dirname(path), link)
+    end
     ok = if File.directory?(target)
            File.exist?(File.join(target, "index.html"))
          else

@@ -54,6 +54,7 @@ doc/source/generated
 # Jekyll build output (Gemfile and Gemfile.lock are tracked, so that the
 # site build is reproducible; see .github/workflows/site.yml)
 _site/
+_site_check/
 .jekyll-cache/
 .jekyll-metadata
 
