@@ -77,7 +77,7 @@ Tool-specific utilities
 
 [**r8s_summarize_result.py**](r8s_summarize_result.py): Summarize r8s divergence time estimation results.
 
-[**raxml_duplicate_map.py**](make_duplicate_map.py): Generate a core-to-duplicate map for an MSA filtered by RAxML.
+[**raxml_duplicate_map.py**](raxml_duplicate_map.py): Generate a core-to-duplicate map for an MSA filtered by RAxML.
 
 
 Taxonomy utilities

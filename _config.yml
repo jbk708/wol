@@ -4,6 +4,7 @@ minimal_mistakes_skin: default
 plugins:
   - jekyll-include-cache
   - jekyll-optional-front-matter
+  - jekyll-readme-index
   - jekyll-feed
   - jekyll-remote-theme
   - jekyll-sitemap
@@ -22,6 +23,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - pyproject.toml
+  - script
   - uv.lock
   - code/**/.pytest_cache
 

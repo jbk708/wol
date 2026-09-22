@@ -12,6 +12,7 @@ group :jekyll_plugins do
   gem "jekyll-feed"
   gem "jekyll-include-cache"
   gem "jekyll-optional-front-matter"
+  gem "jekyll-readme-index"
   gem "jekyll-remote-theme"
   gem "jekyll-sitemap"
 end

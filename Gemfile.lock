@@ -79,6 +79,9 @@ GEM
       jekyll (>= 3.7, < 5.0)
     jekyll-optional-front-matter (0.3.3)
       jekyll (>= 3.0, < 5.0)
+    jekyll-readme-index (0.4.0)
+      jekyll (>= 3.0, < 5.0)
+      kramdown-parser-gfm (~> 1.1)
     jekyll-remote-theme (0.5.2)
       addressable (~> 2.0)
       jekyll (>= 3.5, < 5.0)
@@ -181,6 +184,7 @@ DEPENDENCIES
   jekyll-feed
   jekyll-include-cache
   jekyll-optional-front-matter
+  jekyll-readme-index
   jekyll-remote-theme
   jekyll-sitemap
   logger
@@ -224,6 +228,7 @@ CHECKSUMS
   jekyll-feed (0.17.0) sha256=689aab16c877949bb9e7a5c436de6278318a51ecb974792232fd94d8b3acfcc3
   jekyll-include-cache (0.2.2) sha256=fe31c75187c37b035fb3b62b689f1ca284f1871c3bb7f607a8bdf3cc439b0aa1
   jekyll-optional-front-matter (0.3.3) sha256=fc96976ffaa5515b3ad7d553199011aa98782c13694dfbd1a6278ede88212a6e
+  jekyll-readme-index (0.4.0) sha256=b3d8a24579f6ba0e4eaeb5efa80eb91f5fcc691b992ed7826225cc77f395d780
   jekyll-remote-theme (0.5.2) sha256=d41ba7358b7baa7c8f8f4ee03112bbae8dba90235e97d88c25b90a032abb6f55
   jekyll-sass-converter (3.1.0) sha256=83925d84f1d134410c11d0c6643b0093e82e3a3cf127e90757a85294a3862443
   jekyll-sitemap (1.4.0) sha256=0de08c5debc185ea5a8f980e1025c7cd3f8e0c35c8b6ef592f15c46235cf4218
