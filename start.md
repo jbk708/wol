@@ -22,22 +22,27 @@ We do not attempt to create a new taxonomy. However we provide annotations (and 
 
 ## Which release should I use?
 
-There are two releases of WoL. **Most users should use WoL2**, which is the
-current release and the default reference database in
+There are three releases of WoL. **Most users should use WoL2**, which is the
+current stable release and the default reference database in
 [Qiita](https://qiita.ucsd.edu/)'s shotgun metagenomics pipeline.
+[WoL3](wol3) is available as a release candidate, and is worth considering if
+you work with long reads and can accept a format that is not yet final.
 
-| | **WoL2** (current) | **WoL1** |
-|---|---|---|
-| Released | Feb 2023 | Apr 2019 |
-| Genomes | 15,953 | 10,575 |
-| Marker genes | 380 | 381 |
-| Tree-building method | [uDance](https://github.com/balabanmetin/uDance) | [ASTRAL](https://github.com/smirarab/ASTRAL) |
-| Taxonomy | NCBI, GTDB | NCBI, GTDB |
-| Download | [ftp.microbio.me/pub/wol2](https://ftp.microbio.me/pub/wol2/) | [this site](download) and [Globus](https://app.globus.org/file-manager?origin_id=5055eb43-d82b-43f6-8bcb-6be9dfd32748) |
-| Woltka database name | `WoLr2` | `WoLr1` |
+| | [**WoL3**](wol3) | **WoL2** (current) | **WoL1** |
+|---|---|---|---|
+| Released | release candidate, 2026 | Feb 2023 | Apr 2019 |
+| Genomes | 196,062 | 15,953 | 10,575 |
+| Marker genes | 455 | 380 | 381 |
+| Dereplication | 99% ANI | &mdash; | &mdash; |
+| Tree-building method | [uDance](https://github.com/balabanmetin/uDance) on the WoL2 backbone | [uDance](https://github.com/balabanmetin/uDance) | [ASTRAL](https://github.com/smirarab/ASTRAL) |
+| Taxonomy | phylogeny-guided, GTDB-style | NCBI, GTDB | NCBI, GTDB |
+| Download | [ftp.microbio.me/wol3](https://ftp.microbio.me/wol3/) | [ftp.microbio.me/pub/wol2](https://ftp.microbio.me/pub/wol2/) | [this site](download) and [Globus](https://app.globus.org/file-manager?origin_id=5055eb43-d82b-43f6-8bcb-6be9dfd32748) |
+| Woltka database name | &mdash; | `WoLr2` | `WoLr1` |
+| Publication | none yet | see [Citation](#citation) | [Nat Commun 2019](https://www.nature.com/articles/s41467-019-13443-4) |
 
 WoL2 covers 2 domains, 124 phyla, 321 classes, 914 orders, 2,057 families,
-6,811 genera and 12,258 species.
+6,811 genera and 12,258 species. WoL3 covers 120 phyla, 399 classes, 1,324
+orders, 3,535 families, 14,698 genera and 56,502 species.
 
 **WoL1 is not deprecated.** It remains available and fully supported for
 reproducing published analyses, and the rest of this site still describes it.
@@ -57,8 +62,14 @@ For comparative purpose, we also generated multiple trees using the conventional
 
 **WoL2** was built with [**uDance**](https://github.com/balabanmetin/uDance), a divide-and-conquer workflow that refines regions of a tree independently and can extend an existing tree rather than rebuilding it from scratch. This is what makes the phylogeny updatable as new genomes are added, and it is the basis for future releases.
 
+**WoL3** extends the WoL2 phylogeny with uDance, using it as a backbone rather than rebuilding from scratch, and is reconstructed from [**455**](wol3#how-it-was-made) marker genes across [**196,062**](wol3) genomes dereplicated at 99% ANI. See [WoL3](wol3) for details.
+
 
 ## How to get it
+
+**For WoL3** (release candidate), everything is at
+[ftp.microbio.me/wol3](https://ftp.microbio.me/wol3/), including pre-built
+Bowtie2, Minimap2, GSearch and RYpe indexes. See [WoL3](wol3).
 
 **For WoL2** (current release), everything is at
 [ftp.microbio.me/pub/wol2](https://ftp.microbio.me/pub/wol2/): the phylogeny,

@@ -19,10 +19,12 @@ header:
       url: download
   caption: Image by <a href="https://pixabay.com/photos/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=931706">Free-Photos</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=931706">Pixabay</a>
 excerpt: >
-    <b>Release 2</b> (Feb 2023) &mdash; 15,953 genomes &times; 380 marker genes
+    Release 3 (release candidate)
     <br>
-    Release 1 (Apr 2019) &mdash; 10,575 genomes &times; 381 marker genes
+    Built using 196,062 genomes x 455 marker genes
 news:
+  - title: '<small>Sep 14, 2026</small>'
+    excerpt: '**WoL3** is available as a release candidate: 196,062 genomes dereplicated at 99% ANI in a single bacterial-archaeal phylogeny, built for long-read metagenomics. [Details](wol3) &middot; [Download](https://ftp.microbio.me/wol3/)'
   - title: '<small>May 2024</small>'
     excerpt: '**Greengenes2**, which unifies 16S rRNA and shotgun data in one reference tree built on the **WoL2** backbone, is published in [_Nature Biotechnology_](https://doi.org/10.1038/s41587-023-01845-1).'
   - title: '<small>Jul 27, 2023</small>'

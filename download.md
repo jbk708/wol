@@ -1,9 +1,20 @@
 Download
 ========
 
-WoL has two releases. **Most users should use WoL2**; see
+WoL has three releases. **Most users should use WoL2**; see
 [which release should I use?](start#which-release-should-i-use) if you are not
 sure.
+
+
+## Release 3 (WoL3)
+
+A **release candidate**: 196,062 genomes dereplicated at 99% ANI, built for
+long-read metagenomics. Formats may still change and there is no publication to
+cite yet.
+
+- [**ftp.microbio.me/wol3**](https://ftp.microbio.me/wol3/) &mdash; pre-built
+  Bowtie2, Minimap2, GSearch and RYpe indexes are included
+- [**WoL3**](wol3) &mdash; what it is, how it was made, and how to use it
 
 
 ## Release 2 (WoL2)
