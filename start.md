@@ -175,17 +175,20 @@ WoL phylogeny paper:
 
 Depending on what you use, please also cite:
 
-**WoL2** &mdash; the current release was built with uDance:
+**WoL2** &mdash; there is no standalone WoL2 paper. WoL2 was built with uDance,
+and was first described in print as the backbone of Greengenes2, so cite both:
 
 > Balaban M, Jiang Y, Zhu Q, McDonald D, Knight R, Mirarab S. [Generation of accurate, expandable phylogenomic trees with uDance](https://doi.org/10.1038/s41587-023-01868-8). _Nature Biotechnology_. 2024. **42**(5):768-777. doi: 10.1038/s41587-023-01868-8.
+
+> McDonald D, Jiang Y, Balaban M, Cantrell K, Zhu Q, Gonzalez A, Morton JT, Nicolaou G, Parks DH, Karst SM, Albertsen M, Hugenholtz P, DeSantis T, Song SJ, Bartko A, Havulinna AS, Jousilahti P, Cheng S, Inouye M, Niiranen T, Jain M, Salomaa V, Lahti L, Mirarab S, Knight R. [Greengenes2 unifies microbial data in a single reference tree](https://doi.org/10.1038/s41587-023-01845-1). _Nature Biotechnology_. 2024. **42**(5):715-718. doi: 10.1038/s41587-023-01845-1.
+
+**Tree-building protocol** &mdash; how a reference phylogeny of this kind is assembled:
+
+> Zhu Q, Mirarab S. [Assembling a reference phylogenomic tree of bacteria and archaea by summarizing many gene phylogenies](https://doi.org/10.1007/978-1-0716-2691-7_7). In: _Environmental Microbial Evolution: Methods and Protocols_. _Methods in Molecular Biology_. 2022. **2569**:137-165. doi: 10.1007/978-1-0716-2691-7_7.
 
 **OGU analysis** &mdash; per-genome community ecology that bypasses taxonomy:
 
 > Zhu Q, Huang S, Gonzalez A, McGrath I, McDonald D, Haiminen N, Armstrong G, Vázquez-Baeza Y, Yu J, Kuczynski J, Sepich-Poore GD, Swafford AD, Das P, Shaffer JP, Lejzerowicz F, Belda-Ferre P, Havulinna AS, Méric G, Niiranen T, Lahti L, Salomaa V, Kim HC, Jain M, Inouye M, Gilbert JA, Knight R. [Phylogeny-aware analysis of metagenome community ecology based on matched reference genomes while bypassing taxonomy](https://doi.org/10.1128/msystems.00167-22). _mSystems_. 2022. **7**(2):e00167-22. doi: 10.1128/msystems.00167-22.
-
-**Greengenes2** &mdash; 16S rRNA and shotgun data unified on the WoL2 backbone:
-
-> McDonald D, Jiang Y, Balaban M, Cantrell K, Zhu Q, Gonzalez A, Morton JT, Nicolaou G, Parks DH, Karst SM, Albertsen M, Hugenholtz P, DeSantis T, Song SJ, Bartko A, Havulinna AS, Jousilahti P, Cheng S, Inouye M, Niiranen T, Jain M, Salomaa V, Lahti L, Mirarab S, Knight R. [Greengenes2 unifies microbial data in a single reference tree](https://doi.org/10.1038/s41587-023-01845-1). _Nature Biotechnology_. 2024. **42**(5):715-718. doi: 10.1038/s41587-023-01845-1.
 
 
 ## Grants
@@ -199,6 +202,20 @@ Depending on what you use, please also cite:
 - NSF Extreme Science and Engineering Discovery Environment (XSEDE)
   allocation BIO150043, on Comet at the San Diego Supercomputer Center
   (R.K., L.S., S.M.)
+
+**WoL2** (from the [Greengenes2](https://doi.org/10.1038/s41587-023-01845-1)
+acknowledgements)
+
+- NSF XSEDE allocation BIO210103 (Q.Z.)
+- NSF RAPID grant 20385.09 (R.K.)
+- National Institutes of Health (NIH) grant R35GM142725 (S.M.)
+- NIH grant U19AG063744 (R.K.)
+- NIH grant U24DK131617 (R.K.)
+- NIH grant DP1-AT010885 (R.K.)
+- Emerald Foundation grant 3022 (R.K.)
+- ACCESS allocation ASC150046, on Expanse at the San Diego Supercomputer
+  Center, supported by NSF grants 2138259, 2138286, 2138307, 2137603 and
+  2138296
 
 **[WoL3](wol3)**
 
