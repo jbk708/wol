@@ -190,9 +190,28 @@ Depending on what you use, please also cite:
 
 ## Grants
 
-- National Science Foundation (NSF) grant 1565057
-- Alfred P. Sloan Foundation grant G-2017-9838
-- NSF Extreme Science and Engineering Discovery Environment (XSEDE) allocation BIO150043
+**WoL1** ([Zhu et al., 2019](https://www.nature.com/articles/s41467-019-13443-4))
+
+- National Science Foundation (NSF) grant 1565057 (R.K.)
+- Alfred P. Sloan Foundation grant G-2017-9838 (R.K.)
+- NSF grant III-1845967 (S.M.)
+- National Natural Science Foundation of China grant 91951205 (W.L.)
+- NSF Extreme Science and Engineering Discovery Environment (XSEDE)
+  allocation BIO150043, on Comet at the San Diego Supercomputer Center
+  (R.K., L.S., S.M.)
+
+**[WoL3](wol3)**
+
+- Minderoo Foundation grant CLB-3502
+- National Institute on Aging grant U19AG063744
+- National Institutes of Health (NIH) Pioneer Award DP1AT010885
+- National Institute of General Medical Sciences (NIH-NIGMS) award R35GM142725
+- OSG Consortium, which supported genome processing and is itself supported by
+  NSF awards 2030508 and 2323298
+- Advanced Cyberinfrastructure Coordination Ecosystem: Services & Support
+  (ACCESS) allocation BIO250389, on Expanse at the San Diego Supercomputer
+  Center, supported by NSF grants 2138259, 2138286, 2138307, 2137603 and
+  2138296
 
 
 ## Contact
