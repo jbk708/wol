@@ -31,7 +31,7 @@ exclude:
 title: WoL
 # subtitle: Ver 1.0
 name: WoL development team
-description: A Reference Phylogeny for 10,575 Bacterial and Archaeal Genomes
+description: A Reference Phylogeny for Bacterial and Archaeal Genomes
 url: https://biocore.github.io/wol/
 repository: biocore/wol
 logo: ../gallery/logo/logo_s_b.png
@@ -68,7 +68,7 @@ footer:
       description: 'BSD 3-Clause'
     - label: Citation
       icon: fas fa-fw fa-book
-      url: https://www.nature.com/articles/s41467-019-13443-4
+      url: /start#citation
       description: 'Zhu Q, Mai U, Pfeiffer W, Janssen S, Asnicar F, et al. Nat Commun. 2019. 10(1):5477.'
     - label: Grants
       icon: fas fa-fw fa-dollar-sign

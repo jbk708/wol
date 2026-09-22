@@ -3,7 +3,12 @@
 WoL: A Reference Phylogeny for Bacterial and Archaeal Genomes
 =============================================================
 
-Built using 10,575 genomes by 381 marker genes.
+- **WoL2** (current, Feb 2023): 15,953 genomes by 380 marker genes, built with
+  [uDance](https://github.com/balabanmetin/uDance). Download:
+  [ftp.microbio.me/pub/wol2](https://ftp.microbio.me/pub/wol2/)
+- **WoL1** (Apr 2019): 10,575 genomes by 381 marker genes, built with
+  [ASTRAL](https://github.com/smirarab/ASTRAL). This repository hosts its
+  trees, taxonomy, metadata, protocols and code.
 
 Please visit: https://biocore.github.io/wol/
 

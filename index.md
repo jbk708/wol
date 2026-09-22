@@ -19,12 +19,18 @@ header:
       url: download
   caption: Image by <a href="https://pixabay.com/photos/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=931706">Free-Photos</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=931706">Pixabay</a>
 excerpt: >
-    Release 1 (Apr 5, 2019)
+    <b>Release 2</b> (Feb 2023) &mdash; 15,953 genomes &times; 380 marker genes
     <br>
-    Built using 10,575 genomes x 381 genes
+    Release 1 (Apr 2019) &mdash; 10,575 genomes &times; 381 marker genes
 news:
-  - title: '<small>Apr 6, 2021</small>'
-    excerpt: 'Manuscript describing WoL + Woltka analysis of metagenomic data using **OGU** (operational genomic unit) is [preprinted](https://www.biorxiv.org/content/10.1101/2021.04.04.438427v1).'
+  - title: '<small>May 2024</small>'
+    excerpt: '**Greengenes2**, which unifies 16S rRNA and shotgun data in one reference tree built on the **WoL2** backbone, is published in [_Nature Biotechnology_](https://doi.org/10.1038/s41587-023-01845-1).'
+  - title: '<small>Jul 27, 2023</small>'
+    excerpt: '**uDance**, the updatable divide-and-conquer workflow used to build WoL2, is published in [_Nature Biotechnology_](https://doi.org/10.1038/s41587-023-01868-8).'
+  - title: '<small>Feb 12, 2023</small>'
+    excerpt: '**WoL2 is released**: 15,953 genomes and 380 marker genes, roughly 50% more genomes than WoL1. [Download](download#release-2-wol2) &middot; [What changed](start#which-release-should-i-use)'
+  - title: '<small>Apr 26, 2022</small>'
+    excerpt: 'The **OGU** (operational genomic unit) method for phylogeny-aware metagenome community ecology is published in [_mSystems_](https://doi.org/10.1128/msystems.00167-22).'
   - title: '<small>May 6, 2020</small>'
     excerpt: '[Woltka](https://github.com/qiyunzhu/woltka), a bioinformatics package for meta''omics data analysis with WoL, is now in alpha release. Welcome to try!'
   - title: '<small>Mar 16, 2020</small>'

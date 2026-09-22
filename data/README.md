@@ -1,6 +1,9 @@
 Data
 ====
 
+**This page describes WoL1** (10,575 genomes, 2019). For the current release, see [WoL2](../download#release-2-wol2).
+{: .notice--info}
+
 Release of data generated in this project, including the genome catalog, the phylogeny, and many other things, plus their metadata.
 
 You are welcome to use them in your research. For instructions / inspirations on how to use them, see our [protocols](../protocols).

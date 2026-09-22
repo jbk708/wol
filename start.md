@@ -2,6 +2,7 @@ Quick-Start Guide
 =================
 
 - [What it is(n't)](#what-it-is-and-isnt)
+- [Which release should I use?](#which-release-should-i-use)
 - [How it was made](#how-it-was-made)
 - [How to get it](#how-to-get-it)
 - [How to view it](#how-to-view-it)
@@ -19,16 +20,52 @@ We present a **reference phylogenetic tree** (or more precisely, mutiple trees d
 We do not attempt to create a new taxonomy. However we provide annotations (and curations) for the tree and the genome catalog based on either [NCBI](https://www.ncbi.nlm.nih.gov/taxonomy) or [GTDB](http://gtdb.ecogenomic.org/) taxonomy.
 
 
+## Which release should I use?
+
+There are two releases of WoL. **Most users should use WoL2**, which is the
+current release and the default reference database in
+[Qiita](https://qiita.ucsd.edu/)'s shotgun metagenomics pipeline.
+
+| | **WoL2** (current) | **WoL1** |
+|---|---|---|
+| Released | Feb 2023 | Apr 2019 |
+| Genomes | 15,953 | 10,575 |
+| Marker genes | 380 | 381 |
+| Tree-building method | [uDance](https://github.com/balabanmetin/uDance) | [ASTRAL](https://github.com/smirarab/ASTRAL) |
+| Taxonomy | NCBI, GTDB | NCBI, GTDB |
+| Download | [ftp.microbio.me/pub/wol2](https://ftp.microbio.me/pub/wol2/) | [this site](download) and [Globus](https://app.globus.org/file-manager?origin_id=5055eb43-d82b-43f6-8bcb-6be9dfd32748) |
+| Woltka database name | `WoLr2` | `WoLr1` |
+
+WoL2 covers 2 domains, 124 phyla, 321 classes, 914 orders, 2,057 families,
+6,811 genera and 12,258 species.
+
+**WoL1 is not deprecated.** It remains available and fully supported for
+reproducing published analyses, and the rest of this site still describes it.
+Pages that have not yet been updated for WoL2 are marked as such.
+
+**The 2019 _Nature Communications_ paper describes WoL1.** If you are citing the
+phylogeny itself, cite that paper; if you are using WoL2, also cite the
+[uDance](https://doi.org/10.1038/s41587-023-01868-8) paper, which describes how
+it was built. See [Citation](#citation).
+
+
 ## How it was made
 
-In brief, we used [**ASTRAL**](https://github.com/smirarab/ASTRAL) to generate a consensus tree by summarizing individual trees of [**381**](data/markers) single-copy marker genes extracted from [**10,575**](data/genomes) genomes sampled to maximize covered biodiversity.
+**WoL1** used [**ASTRAL**](https://github.com/smirarab/ASTRAL) to generate a consensus tree by summarizing individual trees of [**381**](data/markers) single-copy marker genes extracted from [**10,575**](data/genomes) genomes sampled to maximize covered biodiversity.
 
 For comparative purpose, we also generated multiple trees using the conventional gene alignment concatenation strategy, and using multiple alternative genome and gene sampling rules. Detailed [protocols](protocols) are provided.
+
+**WoL2** was built with [**uDance**](https://github.com/balabanmetin/uDance), a divide-and-conquer workflow that refines regions of a tree independently and can extend an existing tree rather than rebuilding it from scratch. This is what makes the phylogeny updatable as new genomes are added, and it is the basis for future releases.
 
 
 ## How to get it
 
-We recommend using this [**tree**](data/trees/tree.nwk) as the reference phylogeny for observations and downstream applications, together with the genome [**metadata**](data/genomes/metadata.tsv.xz).
+**For WoL2** (current release), everything is at
+[ftp.microbio.me/pub/wol2](https://ftp.microbio.me/pub/wol2/): the phylogeny,
+genome catalog, taxonomy, rRNAs, proteins, functional annotation and pre-built
+databases. See the [download](download) page.
+
+**For WoL1**, we recommend using this [**tree**](data/trees/tree.nwk) as the reference phylogeny for observations and downstream applications, together with the genome [**metadata**](data/genomes/metadata.tsv.xz).
 
 Multiple trees, built using different input data and methodology, together with the corresponding metadata, curated taxonomy and other information, are provided in this repository. Please browse the [**data**](data) directory for details.
 
@@ -81,11 +118,18 @@ Mappings to IMG genome/taxon IDs. are provided in the genome metadata. In the cu
 
 The reference tree can be used for the diversity analysis of shotgun metagenomes, using phylogeny-aware algorithms such as [**UniFrac**](https://en.wikipedia.org/wiki/UniFrac) for beta diversity, and [**Faith's PD**](https://en.wikipedia.org/wiki/Phylogenetic_diversity) for alpha diversity. See this [protocol](protocols/community_ecology).
 
-A derivative for 16S rRNA-based analysis is under development. Please stay tuned.
+A derivative for 16S rRNA-based analysis now exists: **[Greengenes2](https://github.com/biocore/q2-greengenes2)**
+places 16S rRNA sequences onto the WoL2 backbone, so that amplicon and shotgun
+data can be analyzed in one consistent reference tree
+([McDonald et al., 2024](https://doi.org/10.1038/s41587-023-01845-1)).
 
 ### Qiita
 
-The WoL database has been implemented in [**Qiita**](https://qiita.ucsd.edu/). Users can analyze shotgun metagenomic data using WoL from the graphic user interface. See the [Woltka Qiita guide](https://github.com/qiyunzhu/woltka/blob/main/doc/qiita.md).
+The WoL database is implemented in [**Qiita**](https://qiita.ucsd.edu/), where
+**WoLr2 is the default reference database** for the shotgun metagenomics
+pipeline (per-sample Bowtie2 alignment followed by Woltka classification).
+Users can run the analysis from the graphic user interface; see the
+[Woltka Qiita guide](https://github.com/qiyunzhu/woltka/blob/main/doc/qiita.md).
 
 ### PhyloPhlAn
 
@@ -103,14 +147,34 @@ The genome pool, the curated taxonomy and the phylogenetic tree itself can be co
 
 ### TIPP
 
-We will integrate the reference phylogeney with [TIPP](https://github.com/smirarab/sepp/blob/master/tutorial/tipp-tutorial.md), a phylogenetic placement-based metagenomic sequence classifier. Please stay tuned.
+A TIPP-based integration has not been released. For metagenomic classification
+against WoL today, the supported route is
+[**Woltka**](https://github.com/qiyunzhu/woltka) on Bowtie2 alignments; see
+[Microbial community ecology](#microbial-community-ecology) above. To place
+*new genomes* into the reference phylogeny, see
+[uDance](https://github.com/balabanmetin/uDance).
 
 
 ## Citation
 
-If you use the data, code or protocols developed in this work, please cite:
+If you use the data, code or protocols developed in this work, please cite the
+WoL phylogeny paper:
 
 > Zhu Q\*, Mai U\*, Pfeiffer W, Janssen S, Asnicar F, Sanders JG, Belda-Ferre P, Al-Ghalith GA, Kopylova E, McDonald D, Kosciolek T, Yin JB, Huang S, Salam N, Jiao J, Wu Z, Xu ZZ, Sayyari E, Morton JT, Podell S, Knights D, Li W, Huttenhower C, Segata N, Smarr L, Mirarab S, Knight R. [Phylogenomics of 10,575 genomes reveals evolutionary proximity between domains Bacteria and Archaea](https://www.nature.com/articles/s41467-019-13443-4). _Nature Communications_. 2019. **10**(1):5477. doi: 10.1038/s41467-019-13443-4.
+
+Depending on what you use, please also cite:
+
+**WoL2** &mdash; the current release was built with uDance:
+
+> Balaban M, Jiang Y, Zhu Q, McDonald D, Knight R, Mirarab S. [Generation of accurate, expandable phylogenomic trees with uDance](https://doi.org/10.1038/s41587-023-01868-8). _Nature Biotechnology_. 2024. **42**(5):768-777. doi: 10.1038/s41587-023-01868-8.
+
+**OGU analysis** &mdash; per-genome community ecology that bypasses taxonomy:
+
+> Zhu Q, Huang S, Gonzalez A, McGrath I, McDonald D, Haiminen N, Armstrong G, Vázquez-Baeza Y, Yu J, Kuczynski J, Sepich-Poore GD, Swafford AD, Das P, Shaffer JP, Lejzerowicz F, Belda-Ferre P, Havulinna AS, Méric G, Niiranen T, Lahti L, Salomaa V, Kim HC, Jain M, Inouye M, Gilbert JA, Knight R. [Phylogeny-aware analysis of metagenome community ecology based on matched reference genomes while bypassing taxonomy](https://doi.org/10.1128/msystems.00167-22). _mSystems_. 2022. **7**(2):e00167-22. doi: 10.1128/msystems.00167-22.
+
+**Greengenes2** &mdash; 16S rRNA and shotgun data unified on the WoL2 backbone:
+
+> McDonald D, Jiang Y, Balaban M, Cantrell K, Zhu Q, Gonzalez A, Morton JT, Nicolaou G, Parks DH, Karst SM, Albertsen M, Hugenholtz P, DeSantis T, Song SJ, Bartko A, Havulinna AS, Jousilahti P, Cheng S, Inouye M, Niiranen T, Jain M, Salomaa V, Lahti L, Mirarab S, Knight R. [Greengenes2 unifies microbial data in a single reference tree](https://doi.org/10.1038/s41587-023-01845-1). _Nature Biotechnology_. 2024. **42**(5):715-718. doi: 10.1038/s41587-023-01845-1.
 
 
 ## Grants

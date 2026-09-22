@@ -1,6 +1,9 @@
 Protocols
 =========
 
+**This page describes WoL1** (10,575 genomes, 2019). For the current release, see [WoL2](../download#release-2-wol2).
+{: .notice--info}
+
 Protocols for building, analyzing, and using the trees and other resources in this project.
 
 
