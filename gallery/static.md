@@ -30,7 +30,7 @@ row3:
 
 {% include gallery id="row1" layout="" %}
 
-**Technical details**: ASTRAL tree (`astral`) with branch lengths estimated using the conserved alignment (`cons`), and with low-support branches contracted (`e5p50`), collapsed to classes with 10 or more taxa, or phyla with at least one taxon, following NCBI taxonomy curated using tax2tree. [More details...](../../protocols/tree_rendering)
+**Technical details**: ASTRAL tree (`astral`) with branch lengths estimated using the conserved alignment (`cons`), and with low-support branches contracted (`e5p50`), collapsed to classes with 10 or more taxa, or phyla with at least one taxon, following NCBI taxonomy curated using tax2tree. [More details...](../protocols/tree_rendering)
 
 
 

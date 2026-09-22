@@ -1,0 +1,49 @@
+# Python environment for the analysis code under code/.
+#
+# This does NOT build the website (that is Jekyll; see Gemfile). It pins the
+# scientific stack used by the scripts, notebooks and modules in code/, so that
+# the analyses remain reproducible.
+#
+#   uv sync            # create .venv with the locked versions
+#   uv run pytest      # run the test suites
+
+[project]
+name = "wol"
+version = "1.0.0"
+description = "Analysis code for the Web of Life (WoL) reference phylogeny"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+
+dependencies = [
+    "biom-format",
+    "matplotlib",
+    "numpy",
+    "pandas",
+    "scikit-bio",
+    "scikit-learn",
+    "scipy",
+    "seaborn",
+]
+
+[project.urls]
+Homepage = "https://biocore.github.io/wol/"
+Repository = "https://github.com/biocore/wol"
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+]
+
+[tool.pytest.ini_options]
+# code/ is not an installed package. Both entries are needed: `utils` resolves
+# under code/, while prototypeSelection.py is shadowed by the directory of the
+# same name unless code/prototypeSelection/ is also on the path.
+pythonpath = ["code", "code/prototypeSelection"]
+testpaths = ["code"]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]
+
+[tool.uv]
+package = false

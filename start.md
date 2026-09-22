@@ -85,7 +85,7 @@ A derivative for 16S rRNA-based analysis is under development. Please stay tuned
 
 ### Qiita
 
-The WoL database has been implemented in [**Qiita**](https://qiita.ucsd.edu/). Users can analyze shotgun metagenomic data using WoL from the graphic user interface. See [details](doc/qiita.md).
+The WoL database has been implemented in [**Qiita**](https://qiita.ucsd.edu/). Users can analyze shotgun metagenomic data using WoL from the graphic user interface. See the [Woltka Qiita guide](https://github.com/qiyunzhu/woltka/blob/main/doc/qiita.md).
 
 ### PhyloPhlAn
 

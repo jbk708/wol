@@ -22,7 +22,7 @@ For programs (e.g., Kraken, Centrifuge) that prefer taxonomy in the format of [N
 
 - Note: taxdump is only available for NCBI, but not GTDB.
 
-Then one will need a genome ID to TaxID map (`g2tid.txt`). This exists in the [genome metadata](../data/genome/metadata.tsv.xz) under column `taxid` (original NCBI TaxIDs), or in the curated taxonomy file: [ranks.tsv](../data/taxonomy/ncbi/curation/taxid/ranks.tsv.xz). For the latter case, one may extract the lowest classified rank for each genome:
+Then one will need a genome ID to TaxID map (`g2tid.txt`). This exists in the [genome metadata](../data/genomes/metadata.tsv.xz) under column `taxid` (original NCBI TaxIDs), or in the curated taxonomy file: [ranks.tsv](../data/taxonomy/ncbi/curation/taxid/ranks.tsv.xz). For the latter case, one may extract the lowest classified rank for each genome:
 
 ```bash
 cat ranks.tsv | grep ^G | awk -v OFS='\t' '{print $1, $NF}' > g2tid.txt

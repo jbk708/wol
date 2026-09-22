@@ -180,7 +180,7 @@ def prototype_selection_exhaustive(dm, num_prototypes, seedset=None,
                             "than %i combinations instead!")
                            % (num_combinations, max_combinations_to_test))
 
-    max_dist, max_set = -1 * np.infty, None
+    max_dist, max_set = -1 * np.inf, None
     for s in set(combinations(ids, num_prototypes)):
         d = distance_sum(s + seedset, dm)
         if d > max_dist:
@@ -601,7 +601,7 @@ def prototype_selection_destructive_maxdist(dm, num_prototypes, seedset=None):
     # other. "Removing" works by tagging its distance-sum as infinity. Plus, we
     # decrease the number of available elements by one.
     minElmIdx = currDists.argmin()
-    currDists[minElmIdx], numRemain = np.infty, numRemain-1
+    currDists[minElmIdx], numRemain = np.inf, numRemain-1
 
     # continue until only num_prototype elements are left
     while (numRemain > num_prototypes):
@@ -611,10 +611,10 @@ def prototype_selection_destructive_maxdist(dm, num_prototypes, seedset=None):
         # find the next element to be removed, again as the one that is
         # closest to all others
         minElmIdx = currDists.argmin()
-        currDists[minElmIdx], numRemain = np.infty, numRemain-1
+        currDists[minElmIdx], numRemain = np.inf, numRemain-1
 
     # return a list of IDs of the surviving elements, which are the found
     # prototypes.
     return [dm.ids[idx]
             for idx, dist in enumerate(currDists)
-            if dist != np.infty]
+            if dist != np.inf]

@@ -41,14 +41,14 @@ def prototype_selection_destructive_maxdist(dm, num_prototypes, seedset=None):
         for e in seedset:
             currDists[dm.index(e)] = maxVal * 2
     minElmIdx = currDists.argmin()
-    currDists[minElmIdx], numRemain = np.infty, numRemain - 1
+    currDists[minElmIdx], numRemain = np.inf, numRemain - 1
     while (numRemain > num_prototypes):
         currDists -= dm.data[minElmIdx]
         minElmIdx = currDists.argmin()
-        currDists[minElmIdx], numRemain = np.infty, numRemain - 1
+        currDists[minElmIdx], numRemain = np.inf, numRemain - 1
     return [dm.ids[idx]
             for idx, dist in enumerate(currDists)
-            if dist != np.infty]
+            if dist != np.inf]
 
 
 if __name__ == "__main__":

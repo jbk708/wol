@@ -1,17 +1,29 @@
 # theme: Minimal Mistakes
-remote_theme: mmistakes/minimal-mistakes@4.18.1
+remote_theme: mmistakes/minimal-mistakes@4.28.1
 minimal_mistakes_skin: default
 plugins:
   - jekyll-include-cache
   - jekyll-optional-front-matter
+  - jekyll-feed
+  - jekyll-remote-theme
+  - jekyll-sitemap
 
 # directories
-plugins_dir: pages/plugins
-layouts_dir: pages/layouts
+# Only the dirs that actually exist are overridden; layouts, sass and plugins
+# come from the remote theme.
 data_dir: pages/data
 includes_dir: pages/includes
-sass_dir: pages/sass
-empress_dir: pages/empress
+
+# Template internals live under pages/ (which is not underscore-prefixed, so
+# Jekyll would otherwise copy them verbatim into the built site).
+exclude:
+  - pages/data
+  - pages/includes
+  - Gemfile
+  - Gemfile.lock
+  - pyproject.toml
+  - uv.lock
+  - code/**/.pytest_cache
 
 # metadata
 title: WoL
@@ -50,7 +62,7 @@ footer:
   links:
     - label: License
       icon: fas fa-fw fa-certificate
-      url: LICENSE
+      url: /LICENSE
       description: 'BSD 3-Clause'
     - label: Citation
       icon: fas fa-fw fa-book

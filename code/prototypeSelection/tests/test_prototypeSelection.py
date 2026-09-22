@@ -91,7 +91,7 @@ class prototypeSelection(TestCase):
         # test that no missing IDs can be used
         self.assertRaisesRegex(
             MissingIDError,
-            'The ID \'X\' is not in the dissimilarity matrix.',
+            "The ID 'X' is not in the",  # wording varies across scikit-bio versions
             distance_sum,
             ['A', 'B', 'X'],
             self.dm20)
@@ -107,7 +107,7 @@ class prototypeSelection(TestCase):
         # test that list of IDs holds at least 1 element
         self.assertRaisesRegex(
             DissimilarityMatrixError,
-            'Data must be at least 1x1 in size',
+            'must be at least 1',  # wording varies across scikit-bio versions
             distance_sum,
             [],
             self.dm20)

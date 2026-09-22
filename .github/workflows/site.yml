@@ -1,0 +1,84 @@
+name: site
+
+# Builds the Jekyll site on every push and pull request, and deploys it to
+# GitHub Pages from the default branch.
+#
+# NOTE: this replaces the legacy branch-based Pages builder. For deployment to
+# take effect, set Settings -> Pages -> "Build and deployment" -> Source to
+# "GitHub Actions" in the repository settings.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment; don't cancel a run that is mid-deploy.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+          bundler-cache: true
+
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build site
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+
+      - name: Check for broken internal links
+        run: |
+          bundle exec ruby -e '
+            require "find"
+            missing = []
+            Find.find("_site") do |path|
+              next unless path.end_with?(".html")
+              html = File.read(path, encoding: "UTF-8", invalid: :replace)
+              html.scan(/(?:href|src)="([^"#?:]+)"/) do |(link)|
+                next if link.start_with?("//")
+                target = link.start_with?("/") ? File.join("_site", link) \
+                                               : File.join(File.dirname(path), link)
+                next if File.exist?(target) || File.exist?(target + ".html")
+                next if File.exist?(File.join(target, "index.html"))
+                missing << "#{path.sub("_site/", "")} -> #{link}"
+              end
+            end
+            if missing.any?
+              puts "Broken internal links (#{missing.size}):"
+              puts missing.uniq.sort
+              exit 1
+            end
+            puts "No broken internal links."
+          '
+
+      - name: Upload Pages artifact
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

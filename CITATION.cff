@@ -1,0 +1,144 @@
+cff-version: 1.2.0
+message: "If you use WoL data, code or protocols, please cite the article below."
+title: "WoL: Reference Phylogeny for Bacterial and Archaeal Genomes"
+abstract: >-
+  A reference phylogeny for bacterial and archaeal genomes, built from 10,575
+  genomes using 381 global marker genes, together with the genome catalog,
+  curated taxonomy, protocols and analysis code.
+url: "https://biocore.github.io/wol/"
+repository-code: "https://github.com/biocore/wol"
+license: BSD-3-Clause
+type: dataset
+authors:
+  - family-names: Zhu
+    given-names: Qiyun
+  - family-names: Mai
+    given-names: Uyen
+  - family-names: Pfeiffer
+    given-names: Wayne
+  - family-names: Janssen
+    given-names: Stefan
+  - family-names: Asnicar
+    given-names: Francesco
+  - family-names: Sanders
+    given-names: Jon G.
+  - family-names: Belda-Ferre
+    given-names: Pedro
+  - family-names: Al-Ghalith
+    given-names: Gabriel A.
+  - family-names: Kopylova
+    given-names: Evguenia
+  - family-names: McDonald
+    given-names: Daniel
+  - family-names: Kosciolek
+    given-names: Tomasz
+  - family-names: Yin
+    given-names: John B.
+  - family-names: Huang
+    given-names: Shi
+  - family-names: Salam
+    given-names: Nimaichand
+  - family-names: Jiao
+    given-names: Jian-Yu
+  - family-names: Wu
+    given-names: Zijun
+  - family-names: Xu
+    given-names: Zhenjiang Z.
+  - family-names: Cantrell
+    given-names: Kalen
+  - family-names: Yang
+    given-names: Yimeng
+  - family-names: Sayyari
+    given-names: Erfan
+  - family-names: Rabiee
+    given-names: Maryam
+  - family-names: Morton
+    given-names: James T.
+  - family-names: Podell
+    given-names: Sheila
+  - family-names: Knights
+    given-names: Dan
+  - family-names: Li
+    given-names: Wen-Jun
+  - family-names: Huttenhower
+    given-names: Curtis
+  - family-names: Segata
+    given-names: Nicola
+  - family-names: Smarr
+    given-names: Larry
+  - family-names: Mirarab
+    given-names: Siavash
+  - family-names: Knight
+    given-names: Rob
+preferred-citation:
+  type: article
+  title: >-
+    Phylogenomics of 10,575 genomes reveals evolutionary proximity between
+    domains Bacteria and Archaea
+  journal: "Nature Communications"
+  year: 2019
+  volume: 10
+  issue: 1
+  start: 5477
+  doi: 10.1038/s41467-019-13443-4
+  authors:
+    - family-names: Zhu
+      given-names: Qiyun
+    - family-names: Mai
+      given-names: Uyen
+    - family-names: Pfeiffer
+      given-names: Wayne
+    - family-names: Janssen
+      given-names: Stefan
+    - family-names: Asnicar
+      given-names: Francesco
+    - family-names: Sanders
+      given-names: Jon G.
+    - family-names: Belda-Ferre
+      given-names: Pedro
+    - family-names: Al-Ghalith
+      given-names: Gabriel A.
+    - family-names: Kopylova
+      given-names: Evguenia
+    - family-names: McDonald
+      given-names: Daniel
+    - family-names: Kosciolek
+      given-names: Tomasz
+    - family-names: Yin
+      given-names: John B.
+    - family-names: Huang
+      given-names: Shi
+    - family-names: Salam
+      given-names: Nimaichand
+    - family-names: Jiao
+      given-names: Jian-Yu
+    - family-names: Wu
+      given-names: Zijun
+    - family-names: Xu
+      given-names: Zhenjiang Z.
+    - family-names: Cantrell
+      given-names: Kalen
+    - family-names: Yang
+      given-names: Yimeng
+    - family-names: Sayyari
+      given-names: Erfan
+    - family-names: Rabiee
+      given-names: Maryam
+    - family-names: Morton
+      given-names: James T.
+    - family-names: Podell
+      given-names: Sheila
+    - family-names: Knights
+      given-names: Dan
+    - family-names: Li
+      given-names: Wen-Jun
+    - family-names: Huttenhower
+      given-names: Curtis
+    - family-names: Segata
+      given-names: Nicola
+    - family-names: Smarr
+      given-names: Larry
+    - family-names: Mirarab
+      given-names: Siavash
+    - family-names: Knight
+      given-names: Rob
