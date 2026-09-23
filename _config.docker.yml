@@ -1,0 +1,4 @@
+# Overrides layered on _config.yml for the container build (see Dockerfile):
+# serve from the root of weboflife3.org instead of the GitHub Pages subpath.
+url: https://weboflife3.org
+baseurl: ""

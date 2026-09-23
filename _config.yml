@@ -27,6 +27,11 @@ exclude:
   - _site_check
   - uv.lock
   - code/**/.pytest_cache
+  # container build and kl-remote deployment (see deploy/README.md)
+  - Dockerfile
+  - compose.yml
+  - docker
+  - deploy
 
 # metadata
 title: WoL

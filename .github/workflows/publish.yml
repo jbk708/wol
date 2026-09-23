@@ -1,0 +1,85 @@
+# Build the site image on every PR. Pushes to the wol3 branch of lucaspatel/wol also publish
+# ghcr.io/lucaspatel/wol:wol3, which kl-remote picks up within ~5 minutes (deploy/wol-update.timer).
+name: Publish image
+
+"on":
+  push:
+    branches: [wol3]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  IMAGE_NAME: ghcr.io/${{ github.repository }}
+  # Only lucaspatel/wol's wol3 branch publishes; forks and PRs just build and smoke-test.
+  PUBLISH: ${{ github.repository == 'lucaspatel/wol' && github.ref == 'refs/heads/wol3' && github.event_name != 'pull_request' }}
+
+jobs:
+  image:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/metadata-action@v5
+        id: meta
+        with:
+          images: ${{ env.IMAGE_NAME }}
+          flavor: latest=false
+          tags: |
+            type=raw,value=wol3
+            type=sha,format=long
+
+      - name: Build
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          load: true
+          tags: wol:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Smoke test
+        run: |
+          docker run -d --name wol --read-only --tmpfs /tmp -p 8080:8080 wol:ci
+          for i in $(seq 1 20); do curl -fs http://127.0.0.1:8080/healthz && break; sleep 1; done
+          for path in / /start /download /empress /data/genomes/ /data/trees/tree.nwk; do
+            curl -fsS -o /dev/null -w "%{http_code} $path\n" "http://127.0.0.1:8080$path"
+          done
+
+      - name: Log in to GHCR
+        if: env.PUBLISH == 'true'
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push
+        if: env.PUBLISH == 'true'
+        id: push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+
+      - name: Summary
+        if: env.PUBLISH == 'true'
+        run: |
+          echo "Pushed \`$IMAGE_NAME:wol3\` @ \`${{ steps.push.outputs.digest }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "kl-remote deploys it within ~5 min (wol-update.timer)." >> "$GITHUB_STEP_SUMMARY"

@@ -1,0 +1,8 @@
+[Unit]
+Description=Pull and redeploy the latest WoL site image
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/wol/wol-update.sh
