@@ -53,6 +53,7 @@ doc/source/generated
 
 # GitHub Pages
 Gemfile
+!docker/Gemfile
 Gemfile.lock
 _site/
 
