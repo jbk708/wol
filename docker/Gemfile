@@ -1,0 +1,7 @@
+# Mirrors the GitHub Pages build environment so the container renders the site the same way
+# biocore.github.io/wol does. Lives here, not at the repo root, because .gitignore ignores Gemfile.
+source "https://rubygems.org"
+
+gem "github-pages", "~> 232", group: :jekyll_plugins
+gem "jekyll-include-cache", group: :jekyll_plugins
+gem "webrick"

@@ -1,0 +1,9 @@
+.git
+.github
+.dockerignore
+_site
+.jekyll-cache
+.sass-cache
+compose.yml
+deploy
+**/.DS_Store
