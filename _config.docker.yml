@@ -1,0 +1,31 @@
+# Overrides layered on _config.yml for the container build (see Dockerfile).
+# Serves the site from the root of weboflife3.org instead of biocore.github.io/wol/.
+url: https://weboflife3.org
+baseurl: ""
+
+# Replaces Jekyll's default exclude list, so the defaults are restated here.
+exclude:
+  - .sass-cache
+  - .jekyll-cache
+  - gemfiles
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - Dockerfile
+  - .dockerignore
+  - compose.yml
+  - docker
+  - deploy
+
+# GitHub Pages turns these on implicitly (jekyll-remote-theme loads minimal-mistakes); a plain
+# `jekyll build` does not, so list them. Replaces the plugins list in _config.yml.
+plugins:
+  - jekyll-remote-theme
+  - jekyll-include-cache
+  - jekyll-optional-front-matter
+  - jekyll-readme-index
+  - jekyll-relative-links
+  - jekyll-default-layout
+  - jekyll-titles-from-headings
+  - jekyll-github-metadata

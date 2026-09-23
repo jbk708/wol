@@ -1,0 +1,32 @@
+# compose.yml — WoL site on kl-remote, served at https://weboflife3.org through the
+# qiita-explore cloudflared tunnel. Lives in ~/wol/ on the host; see deploy/README.md.
+#
+# Unlike the other kl-remote services this one tracks a moving tag on purpose: every push to
+# main publishes ghcr.io/jbk708/wol:main, and deploy/wol-update.timer pulls it every 5 minutes.
+# To freeze a release, set WOL_IMAGE=ghcr.io/jbk708/wol:sha-<commit> in ~/wol/.env.
+
+name: wol
+
+services:
+  wol:
+    container_name: wol
+    image: ${WOL_IMAGE:-ghcr.io/jbk708/wol:main}
+    # Loopback only; cloudflared is the sole public entry point.
+    ports:
+      - "127.0.0.1:${WOL_PORT:-8096}:8080"
+    restart: unless-stopped
+    # Updates come from wol-update.timer, never from the host's (stopped, opt-out mode) watchtower.
+    labels:
+      com.centurylinklabs.watchtower.enable: "false"
+    read_only: true
+    tmpfs:
+      - /tmp   # nginx-unprivileged keeps its pid and temp files here
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
